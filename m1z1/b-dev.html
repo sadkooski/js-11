@@ -4,7 +4,43 @@
   <body>
     <script>
       // throws error in console
-      console.lo("test");
+      const apartment = {
+  descr: "Spacious apartment in the city center",
+  rating: 4,
+  price: 2153,
+};
+// Change code below this line
+const keys = Object.keys(apartment);
+const values = Object.values(apartment);
+
+console.log(keys)
+console.log(values)
+
+
+const target = 3;
+let sum = 0;
+
+for (let i = 0; i <= target; i += 1) {
+  sum += i;
+}
+
+console.log(sum);
+
+
+
+
+
+const products = [
+  { name: "Radar", price: 1300, quantity: 4 },
+  { name: "Scanner", price: 2700, quantity: 3 },
+  { name: "Droid", price: 400, quantity: 7 },
+  { name: "Grip", price: 1200, quantity: 9 },
+];
+console.log(Object.keys(products))
+
+
+
+
     </script>
   </body>
 </html>
