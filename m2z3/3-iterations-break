@@ -1,6 +1,5 @@
 // iterations-break
 
-
 const clients = ["Mango", "Poly", "Ajax"]
 
 const clientNameToFind = "Poly";
