@@ -1,0 +1,322 @@
+
+if (warunek) {
+    // ciało if
+    }
+
+
+    let cost = 0;
+    const subscription = "pro";
+    
+    if (subscription === "pro") {
+        cost = 100;
+    }
+    
+    console.log(cost);// 100
+
+
+    let cost = 0;
+const subscription = "free";
+
+if (subscription === "pro") {
+    cost = 100;
+}
+
+console.log(cost);// 0
+
+
+
+if (warunek) {
+    // ciało if
+    } else {
+    // ciało else
+    }
+    
+
+
+    let cost;
+const subscription = "free";
+
+if (subscription === "pro") {
+    cost = 100;
+} else {
+    cost = 0;
+}
+
+console.log(cost);// 0
+
+
+let cost;
+const subscription = "pro";
+
+if (subscription === "pro") {
+    cost = 100;
+} else {
+    cost = 0;
+}
+
+console.log(cost);// 100
+
+
+let cost;
+const subscription = "premium";
+
+if (subscription === "free") {
+    cost = 0;
+} else if (subscription === "pro") {
+    cost = 100;
+} else if (subscription === "premium") {
+    cost = 500;
+} else {
+    console.log("Invalid subscription type");
+}
+
+console.log(cost);// 500
+
+
+
+
+let type;
+const age = 20;
+
+if (age >= 18) {
+    type = "adult";
+} else {
+    type = "child";
+}
+
+console.log(type);// "adult"
+
+
+const age = 20;
+const type = age >= 18 ? "adult" : "child";
+console.log(type);// "adult"
+
+
+
+const num1 = 5;
+const num2 = 10;
+let biggerNumber;
+
+if (num1 > num2) {
+    biggerNumber = num1;
+} else {
+    biggerNumber = num2;
+}
+
+console.log(biggerNumber);// 10
+
+
+const num1 = 5;
+const num2 = 10;
+const biggerNumber = num1 > num2 ? num1 : num2;
+
+console.log(biggerNumber);// 10
+
+
+
+switch (value) {
+    case value:
+    instrukcja;
+    break;
+
+    case value:
+    instrukcja;
+    break;
+
+    default:
+    instrukcje;
+}
+
+
+
+    let cost;
+const subscription = "premium";
+
+switch (subscription) {
+    case "free":
+    cost = 0;
+    break;
+
+    case "pro":
+    cost = 100;
+    break;
+
+    case "premium":
+    cost = 500;
+    break;
+
+    default:
+    console.log("Invalid subscription type");
+}
+
+console.log(cost);// 500
+
+
+
+
+const value = 5;
+
+if (true) {
+    console.log("Block scope: ", value);// 5
+}
+
+console.log("Global scope: ", value);// 5
+
+
+// Wszystkie konstrukcje używające nawiasów klamrowych {} (warunki, pętle, funkcje itp.) tworzą nowy zakres lokalny, a zmienne zadeklarowane w tym zakresie przy użyciu let lub const nie są dostępne poza tym blokiem.
+
+if (true) {
+    const value = 5;
+    console.log("Block scope: ", value);// 5
+}
+
+console.log("Global scope: ", value);// ReferenceError: value is not defined
+
+
+
+
+const global = "global";
+
+if (true) {
+    const blockA = "block A";
+
+// Możemy użyć globalnego zakresu i lokalnego zakresu A
+    console.log(global);// 'global'
+    console.log(blockA);// block A
+
+// Zmienne blockB i blockC nie są odznalezione w dostępnych zakresach.
+// Pojawi się błąd wykorzystania zmiennej.
+    console.log(blockB);// ReferenceError: blockB is not defined
+    console.log(blockC);// ReferenceError: blockC is not defined
+
+    if (true) {
+    const blockB = "block B";
+
+// Możemy użyć globalnego zakresu + zewnętrznego A + lokalnego B
+    console.log(global);// global
+    console.log(blockA);// block A
+    console.log(blockB);// block B
+
+// Zmienna blockC nie jest odnaleziona w dostępnych zakresach.
+// Pojawi się błąd wykorzystania zmiennej.
+    console.log(blockC);// ReferenceError: blockC is not defined
+    }
+}
+
+if (true) {
+    const blockC = "block C";
+
+// Możemy użyć globalnego zakresu + lokalnego C
+    console.log(global);// global
+    console.log(blockC);// block C
+
+// Zmienne blockA i blockB nie są odnalezione w dostępnych zakresach.
+// Pojawi się błąd wykorzystania zmiennej.
+    console.log(blockA);// ReferenceError: blockA is not defined
+    console.log(blockB);// ReferenceError: blockB is not defined
+}
+
+// Użyjmy tylko globalnego zakresu
+console.log(global);// global
+
+// Zmienne blockA, blockB i blockC
+// nie są odznalezione w dostępnych zakresach.
+// Pojawi się błąd wykorzystania zmiennej.
+console.log(blockA);// ReferenceError: blockA is not defined
+console.log(blockB);// ReferenceError: blockB is not defined
+console.log(blockC);// ReferenceError: blockC is not defined
+
+
+
+
+while (condition) {
+    // Kod, ciało pętli (body)
+    }
+
+
+    let counter = 0;
+
+while (counter < 10) {
+    console.log("counter: ", counter);
+    counter += 1;
+}
+
+
+let clientCounter = 18;
+const maxClients = 25;
+
+while (clientCounter < maxClients) {
+    console.log(clientCounter);
+    clientCounter += 1;
+}
+
+
+
+do {
+    // body
+    } while (condition);
+    
+
+
+
+    let password = "";
+
+do {
+    password = prompt("Wprowadź hasło dłuższe niż 4 znaki", "");
+} while (password.length < 5);
+
+console.log("Hasło zostało wprowadzone: ", password);
+
+
+
+for (let i = 0; i <= 20; i += 5) {
+    console.log(i);
+}
+
+
+
+const target = 10;
+let sum = 0;
+
+for (let i = 0; i <= target; i += 5) {
+    sum += i;
+}
+
+console.log(sum); // 15
+
+
+
+const max = 4;
+for (let i = 0; i < max; i += 1) {
+    console.log(`${max} % ${i} = `, max % i);
+}
+
+// '4 % 0 = ' NaN
+// '4 % 1 = ' 0
+// '4 % 2 = ' 0
+// '4 % 3 = ' 1
+
+
+
+for (let i = 0; i <= 5; i += 1) {
+    console.log(i);
+
+    if (i === 3) {
+        console.log("osiągneliśmy 3, przerywamy wykonywanie pętli");
+        break;
+    }
+}
+
+console.log("wiadomość po pętli");
+
+
+
+const number = 10;
+
+for (let i = 0; i < number; i += 1) {
+    if (i % 2 === 0) {
+    continue;
+}
+
+  console.log("Nieparzyste i: ", i); // 1, 3, 5, 7, 9
+}

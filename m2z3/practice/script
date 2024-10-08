@@ -1,0 +1,353 @@
+// Array - struktura danych do przechowywania i manipulowania indeksowanych zbiorem wartości. Służy do przechowywania i pracowania nad kolekcjami, uporządkowanymi według kolejności, danych, takich jak lista hoteli, towarów, klientów hoteli itp.
+
+const clients = ["Mango", "Poly", "Ajax"];
+
+// Podając indeks elementu w nawiasie kwadratowym, otrzymujemy jego wartość
+console.log(clients[0]);// Mango
+console.log(clients[1]);// Poly
+console.log(clients[2]);// Ajax
+
+
+const clients = ["Mango", "Poly", "Ajax"];
+clients[0] = "Kiwi";
+clients[1] = "Pango";
+console.log(clients);// ["Kiwi", "Pango", "Ajax"]
+
+
+const clients = ["Mango", "Poly", "Ajax"];
+console.log(clients.length);// 3
+
+
+const clients = ["Mango", "Poly", "Ajax"];
+const lastElementIndex = clients.length - 1;
+console.log(lastElementIndex); // 2
+console.log(clients[lastElementIndex]); // "Ajax"
+
+
+
+
+const clients = ["Mango", "Ajax", "Poly"];
+
+for (let i = 0; i < clients.length; i += 1) {
+    console.log(clients[i]);
+}
+
+
+
+for (const variable of iterable) {
+    // ciało pętli
+    }
+
+// variable — zmienna, która będzie zawierać wartość kolejnych elementów w każdej z iteracji.
+// iterable — zmienna np. typu array, która zawiera elementy i po której możemy “iterować”
+
+const clients = ["Mango", "Ajax", "Poly"];
+
+for (const client of clients) {
+    console.log(client);
+}
+
+const string = "javascript";
+
+for (const character of string) {
+    console.log(character);
+}
+
+
+
+const clients = ["Mango", "Poly", "Ajax"];
+const clientNameToFind = "Poly";
+let message;
+
+for (const client of clients) {
+// W każdej iteracji sprawdzamy, czy dany element tablicy jest identyczny
+// do imienia którego szukamy.
+// Jeśli tak, zapisujemy w message wiadomość o sukcesie
+// a następnie użyjemy instrukcji break, aby przerwać dalsze poszukiwanie
+    if (client === clientNameToFind) {
+    message = "Klient z takim imieniem jest w bazie danych!";
+    break;
+    }
+
+// Jeśli nie znajdziemy takiego klienta,
+// zapisujemy do message wiadomość o braku dopasowania.
+    message = "Nie znaleźliśmy takiego klienta w bazie danych!";
+}
+
+console.log(message); // "Klient z takim imieniem jest w bazie danych!"
+
+
+
+// Instrukcja break nadal się przyda, hipotetycznie w przypadku tablicy 10 000 klientów, ten którego potrzebujemy, mógłby być na pozycji 2 i bez użycia break bez powodu zrobilibyśmy 9998 kolejnych obrotów pętli.
+
+const clients = ["Mango", "Poly", "Ajax"];
+const clientNameToFind = "Poly";
+let message = "Nie znaleźliśmy takiego klienta w bazie danych!";
+
+for (const client of clients) {
+    if (client === clientNameToFind) {
+    message = "Klient z takim imieniem jest w bazie danych!";
+    break;
+    }
+// Jeśli nie mamy dopasowania, to w tej iteracji nie robimy nic.
+}
+
+console.log(message);// Klient z takim imieniem jest w bazie danych!
+
+
+
+// Użyjmy pętli do pokazania tylko liczb większych od określonej liczby.
+
+const numbers = [1, 3, 14, 18, 4, 7, 29, 6, 34];
+const threshold = 15;
+
+// Dla liczb mniejszych niż threshold wykonana zostanie instrukcja continue,
+// dzięki czemu obecny obrót pętli zostaje przerwany
+// i przechodzimy do następnej iteracji.
+for (let i = 0; i < numbers.length; i += 1) {
+    if (numbers[i] < threshold) {
+    continue;
+    }
+
+    console.log(`Liczba większa niż ${threshold}: ${numbers[i]}`);
+}
+
+// 'Liczba większa niż 15: 18'
+// 'Liczba większa niż 15: 29'
+// 'Liczba większa niż 15: 34'
+
+
+
+// Podstawowa różnica między typami złożonymi, a prymitywnymi polega na tym, w jaki sposób są one przechowywane i kopiowane. Prymitywy: strings, numbers, booleans, null i undefined, jeśli są przypisane do nowej zmiennej, to zostaną skopiowane w całości, według wartości (by value).
+
+// Nie dotyczy to typów złożonych. W zmiennej, do której przypisano tablicę lub obiekt, nie jest przechowywana sama wartość, ale adres jej miejsca w pamięci, innymi słowy - link do niego i są one przekazywane przez referencję (by reference).
+
+// Podczas przypisywania przez wartość zmienne są przydzielane do nowej lokalizacji w pamięci, do której kopiowane są dane. Analogia z wieloma kopiami kartki papieru reprezentuje to w prosty sposób, istnieje osobna kartka dla każdego nowego przypisania.
+
+// Podczas przypisywanie przez referencję, zamiast tworzenia nowego obiektu, przypisywany jest link zmiennej (adres) do już istniejącego obiektu, czyli do jego miejsca w pamięci. W ten sposób wiele zmiennych może wskazywać na ten sam obiekt, analogicznie do zamkniętego pokoju, posiadają one klucz dostępu do oryginalnej kartki papieru.
+
+
+
+let a = 5;
+// Przypisanie przez wartość, w pamięci zostanie zarezerwowane miejsce,
+// do którego przekopiowana zostaje wartość 5
+let b = a;
+console.log(a);// 5
+console.log(b);// 5
+
+// Zmieńmy wartość a
+a = 10;
+console.log(a);// 10
+// Wartość b się nie zmienia, bo jest odzielną kopią
+console.log(b);// 5
+
+
+
+const a = ["Mango"];
+// Ponieważ a to tablica, w b zapisuję się link do już istniejącej
+// tablicy w pamięci.
+// W tym momencie zmienne a i b wskazują na tę samą tablicę.
+const b = a;
+console.log(a); // ["Mango"]
+console.log(b); // ["Mango"]
+
+// Zmodyfikujmy tablicę,
+// dodając jeszcze jeden element, wykorzystując zmienną a
+a.push("Poly");
+console.log(a); // ["Mango", "Poly"]
+
+// b również się zmieniło, ponieważ zarówno zmienna b jak i zmienna a
+// zawiera referencję do tego samego miejsca w pamięci
+console.log(b); // ["Mango", "Poly"]
+
+// Takie samo zachowanie widzimy dodając element poprzez zmienna b
+b.push("Ajax");
+console.log(a); // ["Mango", "Poly", "Ajax"]
+console.log(b); // ["Mango", "Poly", "Ajax"]
+
+
+
+// Metody split() i join()
+
+const name = "Mango";
+// dzielimy string na pojedyncze znaki
+console.log(name.split(""));// ["M", "a", "n", "g", "o"]
+
+const message = "JavaScript jest ciekawy";
+// dzielimy string przy użycji znaku spacji
+console.log(message.split(" "));// ["JavaScript", "jest", "ciekawy"]
+
+
+const words = ["JavaScript", "jest", "ciekawy"];
+console.log(words.join(""));// "JavaScriptjestciekawy"
+console.log(words.join(" "));// "JavaScript jest ciekawy"
+console.log(words.join("-"));// "JavaScript-jest-ciekawy"
+
+
+// Metoda indexOf()
+
+const clients = ["Mango", "Ajax", "Poly", "Kiwi"];
+console.log(clients.indexOf("Poly"));// 2
+console.log(clients.indexOf("Monkong"));// -1
+
+
+
+// Metoda includes()
+
+const clients = ["Mango", "Ajax", "Poly", "Kiwi"];
+console.log(clients.includes("Poly"));// true
+console.log(clients.includes("Monkong"));// false
+
+
+
+const fruit = "apple";
+
+if (fruit === "apple" || fruit === "strawberry") {
+    console.log("It is a red fruit!");
+}
+
+const fruit = "apple";
+
+if (
+    fruit === "apple" ||
+    fruit === "strawberry" ||
+    fruit === "cherry" ||
+    fruit === "cranberry"
+) {
+    console.log("It is a red fruit!");
+}
+
+// ----->
+
+// Przenieś wartości warunków do tablicy
+const redFruits = ["apple", "strawberry", "cherry", "cranberries"];
+const fruit = "cherry";
+// Sprawdź, czy element jest obecny w tablicy
+const hasFruit = redFruits.includes(fruit);
+
+if (hasFruit) {
+    console.log(`${fruit} is a red fruit!`);
+}
+
+
+
+// Metody push(), pop() , unshift() i shift()
+
+
+const numbers = [];
+
+numbers.push(1);
+console.log(numbers);// [1]
+
+numbers.push(2);
+console.log(numbers);// [1, 2]
+
+numbers.push(3);
+console.log(numbers);// [1, 2, 3]
+
+numbers.push(4);
+console.log(numbers);// [1, 2, 3, 4]
+
+numbers.push(5, 6);
+console.log(numbers);// [1, 2, 3, 4, 5, 6]
+
+
+const numbers = [1, 2, 3, 4, 5];
+
+console.log(numbers.pop());//  5
+console.log(numbers);// [1, 2, 3, 4]
+
+console.log(numbers.pop());//  4
+console.log(numbers);// [1, 2, 3]
+
+console.log(numbers.pop());//  3
+console.log(numbers);// [1, 2]
+
+console.log(numbers.pop());//  2
+console.log(numbers);// [1]
+
+console.log(numbers.pop());//  1
+console.log(numbers);// []
+
+
+
+Metoda slice()
+
+
+const clients = ["Mango", "Ajax", "Poly", "Kiwi"];
+console.log(clients.slice(1, 3)); // ["Ajax", "Poly"]
+
+// Jeśli begin i end nie są określone, zostanie utworzona całkowita kopia oryginalnej tablicy.
+
+const clients = ["Mango", "Ajax", "Poly", "Kiwi"];
+console.log(clients.slice());// ["Mango", Ajax", "Poly", "Kiwi"]
+
+
+// Jeśli nie określono end, kopiowanie będzie się odbywać od start do końca oryginalnej tablicy.
+
+const clients = ["Mango", "Ajax", "Poly", "Kiwi"];
+console.log(clients.slice(1));// ["Ajax", "Poly", "Kiwi"]
+console.log(clients.slice(2));// ["Poly", "Kiwi"]
+
+
+// Jeśli wartość start jest ujemna, a end nie jest określona, to skopiowane zostanie ostatnie start elementów (przyjrzyj się kolejności wyniku tego wywołania, zostaje ona zachowana)
+
+const clients = ["Mango", "Ajax", "Poly", "Kiwi"];
+console.log(clients.slice(-2));// ["Poly", "Kiwi"]
+
+
+
+Metoda splice()
+
+
+const scores = [1, 2, 3, 4, 5];
+
+// Usuń trzy elementy tablicy, zaczynając od pierwszego elementu (indeks 0)
+const deletedScores = scores.splice(0, 3);
+
+// Tablica scores zawiera teraz dwa elementy
+console.log(scores);// [4, 5]
+
+// Tablica deletedScores zawiera trzy usunięte elementy
+console.log(deletedScores);// [1, 2, 3]
+
+
+
+const colors = ["red", "green", "blue"];
+
+colors.splice(2, 0, "purple");
+console.log(colors);// ["red", "green", "purple", "blue"]
+
+
+
+const colors = ["red", "green", "blue"];
+
+colors.splice(1, 0, "yellow", "pink");
+console.log(colors);// ["red", "yellow", "pink", "green", "blue"]
+
+
+
+const languages = ["C", "C++", "Java", "JavaScript"];
+
+// Zmieniamy element o indeksie 1 na jeden nowy
+languages.splice(1, 1, "Python");
+console.log(languages);// ["C", "Python", "Java", "JavaScript"]
+
+// Zmieniamy jeden element (z indeksem 2) na kilka nowych
+languages.splice(2, 1, "C#", "Swift", "Go");
+console.log(languages);// ["C", "Python", "C#", "Swift", "Go", "JavaScript"]
+
+
+Metoda concat()
+
+const oldClients = ["Mango", "Ajax", "Poly", "Kiwi"];
+const newClients = ["Monkong", "Singu"];
+
+const allClientsWithOldFirst = oldClients.concat(newClients);
+console.log(allClientsWithOldFirst); // ["Mango", "Ajax", "Poly", "Kiwi", "Monkong", "Singu"]
+
+const allClientsWithNewFirst = newClients.concat(oldClients);
+console.log(allClientsWithNewFirst); // ["Monkong", "Singu", "Mango", "Ajax", "Poly", "Kiwi"]
+
+console.log(oldClients); // ["Mango", "Ajax", "Poly", "Kiwi"]
+console.log(newClients); // ["Monkong", "Singu"]

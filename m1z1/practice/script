@@ -1,0 +1,408 @@
+// Zmienne const obowiązkowo powinny mieć nadaną
+// wartość podczas deklaracji, w innym przypadku pojawi się błąd.
+const yearOfBirth = 2006;
+console.log(yearOfBirth); // 2006
+
+// Jeśli zadeklarowaliśmy zmienną const, nie możemy już zmienić jej wartości,
+// Przy próbie nadania nowej wartości pojawi się błąd przy wykonaniu skryptu.
+yearOfBirth = 2020; // ❌ Nieprawidłowo, pojawi się błąd
+
+// Zmienne zadeklarowane za pomocą let 
+// nie muszą mieć wartości w momencie deklaracji.
+let age;
+
+// Jeśli zadeklarowanej zmiennej za pomocą let nie była przypisana wartość,
+// automatycznie nadana zostanie wartość undefined (nie zdefiniowano).
+console.log(age); // undefined
+
+// console.log() to metoda do wyświetlenia danych w konsoli przeglądarki,
+// zapoznamy się z nią nieco później.
+
+// Jeśli zmienna jest zadeklarowana za pomocą let,
+// możemy nadpisać wartość tej zmiennej.
+age = 14;
+console.log(age); // 14
+
+
+// Zmienna stała, która zawiera wartość koloru
+const COLOR_TEAL = "#009688";
+
+// Zmienna stała, która zawiera wiadomość powitalną po zalogowaniu się
+const LOGIN_SUCCESS_MESSAGE = "Witamy!";
+
+
+
+
+let username;
+console.log(username);// undefined
+
+
+// ❌ Nieprawidłowo, pojawi się błąd
+age = 15; // ReferenceError: Cannot access 'age' before initialization
+console.log(age);// ReferenceError: age is not defined
+
+// Deklaracja zmiennej age
+let age = 20;
+
+// ✅ Prawidłowo, odwołujemy się do zmiennej po jej deklaracji
+age = 25;
+console.log(age);// 25
+
+
+
+
+const age = 20;
+const points = 15.8;
+
+const username = "Mango";
+const description = "JavaSript dla początkujących";
+
+const isLoggedIn = true;
+const canMerge = false;
+const hasChildren = true;
+const isModalOpen = false;
+
+// null - specjalna wartość, która oznacza nic. Wykorzystujemy ją w sytuacjach, gdzie potrzebujemy wiedzieć, że nie istnieje jeszcze wartość, ale coś może się tam pojawić. Na przykład jeśli użytkownik nie wybrał żadnej z dostępnych opcji, to możemy przypisać wartość null.
+let selectedProduct = null;
+
+// undefined - specjalna wartość. Domyślnie, gdy zmienna jest zadeklarowana, ale nie zainicjalizowana, jej wartość jest niezdefiniowana, wtedy jej wartością jest określona jako undefined.
+let username;
+console.log(username);// undefined
+
+let username;
+console.log(typeof username); // "undefined"
+
+let inputValue = null;
+console.log(typeof inputValue); // "object"
+
+const quantity = 17;
+console.log(typeof quantity); // "number"
+
+const message = "JavaScript is awesome!";
+console.log(typeof message); // "string"
+
+const isSidebarOpen = false;
+console.log(typeof isSidebarOpen); // "boolean"
+
+
+
+// Dla wyświetlania danych istnieją dwie metody: console.log() i alert(). W nawiasie wpisujemy nazwę zmiennej lub wartość, którą chcemy zobaczyć.
+
+const message = "JavaScript is awesome!";
+console.log(message); // JavaScript is awesome!
+
+
+// Czasem dla ułatwienia możemy wyświetlić kilka wartości naraz, w poniższym przykładzie mamy najpierw podany string opisujący nasz log, a następnie po przecinku wpisaną nazwę zmiennej.
+
+const username = "Mango";
+console.log("Username is ", username);// Username is Mango
+
+
+// Metoda alert() pokazuje okno modalne, które zawiera wartości zmiennej, którą przekażemy w nawiasie.
+
+const message = "JavaScript is awesome!";
+alert(message);
+
+
+
+
+// confirm() - pokazuje okno modalne i dwa przyciski Ok i Cancel. Przy kliknięciu na Ok, wynikiem będzie true, przy kliknięciu na Cancel - zwracana jest wartość false.
+
+// Prosimy klienta o potwierdzenie rezerwacji hotelu
+// i zapisujemy te dane do zmiennej przy kliknięciu confirm
+const isComing = confirm("Please confirm hotel reservation");
+console.log(isComing); // true lub false
+
+
+// prompt() - pokazuje okno modalne z polem do wprowadzenia i przyciski Ok i Cancel. Przy kliknięciu Ok, rezultatem będzie to, co wprowadził użytkownik, przy Cancel - zwracamy wartość null.
+
+// Pytamy o nazwę hotelu z którego chciałby skorzystać klient
+// i zapisujemy wartość do zmiennej jako rezultat wykorzystania prompt.
+const hotelName = prompt("Please enter desired hotel name");
+console.log(hotelName); // string wprowadzony przez użytkownika lub null
+
+
+const value = prompt("Please enter a number!");
+console.log(typeof value); // "string"
+console.log(value); // "5"
+
+
+const x = 10;
+const y = 5;
+
+// Dodawanie
+console.log(x + y); // 15
+
+// Odejmowanie
+console.log(x - y); // 5
+
+// Mnożenie
+console.log(x * y); // 50
+
+// Dzielenie
+console.log(x / y); // 2
+
+// Reszta po dzieleniu
+console.log(x % y); // 0
+
+// Dodawanie i przypisanie
+let value = 5;
+
+// Skrócony zapis: value = value + 10;
+value += 10;
+console.log(value); // 15
+
+
+
+const x = 5;
+const y = 10;
+const z = 5;
+
+console.log("x > y:", x > y);// false
+console.log("x < y:", x < y);// true
+console.log("x < z:", x < z);// false
+console.log("x <= z:", x <= z);// true
+console.log("x === y:", x === y);// false
+console.log("x === z:", x === z);// true
+console.log("x !== y:", x !== y);// true
+console.log("x !== z:", x !== z);// false
+
+
+
+// Dlatego, aby sprawdzić równość lub nierówność dwóch wartości, wykorzystują się tylko operatory === (ścisła równość) i ! == (ścisła nierówność), które nie wykonują transformacji typów operandów.
+
+// ✅ Dobrze
+console.log(5 === "5");// false
+console.log(5 === 5);// true
+console.log(5 !== "5");// true
+console.log(5 !== 5);// false
+console.log(1 === true);// false
+console.log(1 !== true);// true
+
+
+
+// Większość operacji arytmetycznych i funkcji matematycznych konwertuje wartość do liczby automatycznie. Aby upewnić się, że używamy wartości jako liczby, możemy użyć funkcji Number(val), przekazując jako val to, co należy przekonwertować na liczbę.
+
+// Jeśli wartości nie można przekonwertować na liczbę, wynikiem będzie specjalna wartość liczbową NaN (Not a Number). Podobnie działa przekształcenie w innych operatorach i funkcjach matematycznych.
+
+const valueA = "5";
+console.log(Number(valueA)); // 5
+console.log(typeof Number(valueA)); // "number"
+
+const valueB = "random string";
+console.log(Number(valueB)); // NaN
+console.log(typeof Number(valueB)); // "number"
+
+
+
+
+// Metoda Number.parseInt() próbuje sparsować liczbę całkowitą ze stringa.
+
+console.log(Number.parseInt("5px")); // 5
+console.log(Number.parseInt("12qwe74")); // 12
+console.log(Number.parseInt("12.46qwe79")); // 12
+console.log(Number.parseInt("GBP5")); // NaN
+console.log(Number.parseInt("qweqwe")); // NaN
+
+
+// Metoda Number.parseFloat() próbuje sparsować liczbę zmiennoprzecinkową ze stringa (zwróćmy uwagę, że tylko kropka . jest rozumiana jako przecinek między częścią całkowitą a ułamkową).
+
+console.log(Number.parseFloat("5px"));// 5
+console.log(Number.parseFloat("12qwe74"));// 12
+console.log(Number.parseFloat("12.46qwe79"));// 12.46
+console.log(Number.parseFloat("qweqwe"));// NaN
+console.log(Number.parseFloat("5,32"));// 5
+
+
+// Dla wszystkich wartości val oprócz NaN, przy przekazaniu w Number.isNaN(val) zwrócone zostaniefalse. Ta metoda nie próbuje przekształcić val na liczbę, a po prostu sprawdza czy coś ma wartość NaN.
+
+const validNumber = Number("51");// 51
+console.log(Number.isNaN(validNumber));// false
+
+const invalidNumber = Number("qweqwe");// NaN
+console.log(Number.isNaN(invalidNumber));// true
+
+
+// Liczba 0.1 w systemie binarnym jest nieskończonym ułamkiem, ponieważ w takim systemie nie możemy przechować dokładnego wyniku dzielenia 1/10. Wartości binarne nieskończonych ułamków są przechowywane tylko do określonego znaku, przez co powstaje błąd obliczeniowy. Gdy dodajemy 0.1 i 0.2, sumują się dwa ułamki okresowe, przez co pojawia się drobny błąd w obliczeniach.
+
+console.log(0.1 + 0.2 === 0.3);// false
+console.log(0.1 + 0.2);// 0.30000000000000004
+
+
+console.log(0.17 + 0.24);// 0.41000000000000003
+console.log((0.17 * 100 + 0.24 * 100) / 100);// 0.41
+
+
+console.log(0.17 + 0.24);// 0.41000000000000003
+console.log((0.17 + 0.24).toFixed(2));// "0.41"
+console.log((0.17 + 0.24).toFixed(3));// "0.410"
+console.log(typeof (0.17 + 0.24).toFixed(2));// "string"
+
+
+
+// Math.floor(num) - zwraca największą całkowitą liczbę,
+// mniejszą, lub równą podanej liczbie, czyli zaokrągla w dół.
+console.log(Math.floor(1.7)); // 1
+
+// Math.ceil(num) - zwraca najmniejszą całkowitą liczbę,
+// większą, lub równą podanej liczbie, czyli zaokrągla w górę.
+console.log(Math.ceil(1.2)); // 2
+
+// Math.round(num) - zwraca wartość liczby,
+// zaokrągloną do najbliższej liczby całkowitej
+// wedle zasad znanych ze szkoły
+console.log(Math.round(1.2)); // 1
+console.log(Math.round(1.5)); // 2
+
+// Math.max(num1, num2, ...) - zwraca największą liczbę z podanych
+console.log(Math.max(20, 10, 50, 40)); // 50
+
+// Math.min(num1, num2, ...) - zwraca najmniejszą liczbę z podanych
+console.log(Math.min(20, 10, 50, 40)); // 10
+
+// Math.pow(base, exponent) - operacja potęgowania
+console.log(Math.pow(2, 4)); // 2^4 === 16
+
+// Math.random() - zwraca zmiennoprzecinkową liczbę pseudolosową
+// z zakresu [0, 1)
+console.log(Math.random()); // pseudolosowa losowa liczba pomiędzy 0 i 1
+console.log(Math.random() * (10 - 1) + 1); // pseudolosowa liczba od 1 do 10
+
+
+
+const message = "Mango " + "is" + " happy";
+console.log(message);// Mango is happy
+
+
+console.log(1 + "2");// "12"
+console.log(1 + "2" + 4);// "124"
+console.log(1 + 2 + "4");// "34"
+
+
+
+// Używając zmiennych należy skomponować string z podstawionymi wartościami
+const guestName = "Mango";
+const roomNumber = 207;
+const greeting =
+    "Welcome " + guestName + ", your room number is " + roomNumber + "!";
+console.log(greeting);// "Welcome Mango, your room number is 207!"
+
+
+// Komponowanie wierszy z wartościami określonymi za pomocą konkatenacji jest bardzo niewygodne. Na ratunek przychodzą wiersze szablonów.
+
+const guestName = "Mango";
+const roomNumber = 207;
+const greeting = `Welcome ${guestName}, your room number is ${roomNumber}!`;
+console.log(greeting);// "Welcome Mango, your room number is 207!"
+
+
+const message = "Welcome to Bahamas!";
+console.log(message.length);// 19
+console.log("There is nothing impossible to him who will try".length);// 47
+
+
+const message = "Welcome to Bahamas!";
+console.log(message.toLowerCase());// "welcome to bahamas!"
+console.log(message.toUpperCase());// "WELCOME TO BAHAMAS!"
+console.log(message);// "Welcome to Bahamas!"
+
+
+
+const BRAND_NAME = "SAMSUNG";
+const userInput = "saMsUng";
+const normalizedToUpperCaseInput = userInput.toUpperCase();
+
+console.log(userInput);// 'saMsUng'
+console.log(userInput === BRAND_NAME);// false
+console.log(normalizedToUpperCaseInput);// 'SAMSUNG'
+console.log(normalizedToUpperCaseInput === BRAND_NAME);// true
+
+
+
+
+const message = "Welcome to Bahamas!";
+console.log(message.indexOf("to"));// 8
+console.log(message.indexOf("To"));// -1
+console.log(message.indexOf("hello"));// -1
+
+
+
+const productName = "Repair droid";
+
+console.log(productName.includes("p"));// true
+console.log(productName.includes("P"));// false
+console.log(productName.includes("droid"));// true
+console.log(productName.includes("Droid"));// false
+console.log(productName.includes("Repair"));// true
+console.log(productName.includes("repair"));// false
+
+
+
+const jsFileName = "script.js";
+console.log(jsFileName.endsWith(".js"));// true
+
+const cssFileName = "styles.css";
+console.log(cssFileName.endsWith(".js"));// false
+
+
+
+const jsFileName = "script.js";
+const minifiedJsFileName = jsFileName.replace(".js", ".min.js");
+console.log(minifiedJsFileName);// "script.min.js"
+
+const cssFileNames = "styles.css, about.css, portfolio.css";
+const minifiedCssFileNames = cssFileNames.replaceAll(".css", ".min.css");
+console.log(minifiedCssFileNames);// "styles.min.css, about.min.css, portfolio.min.css"
+
+
+
+
+const productName = "Repair droid";
+console.log(productName.slice(0, 4)); // "Repa"
+console.log(productName.slice(3, 9)); // "air dr"
+console.log(productName.slice(0, productName.length)); // "Repair droid"
+console.log(productName.slice(7, productName.length)); // "droid"
+
+
+
+const age = 20;
+console.log(age > 10 && age < 30);// true && true -> true
+
+
+const age = 50;
+console.log(age > 10 && age < 30);// true && false -> false
+console.log(age > 80 && age < 120);// false && true -> false
+
+
+// Jak widzimy, logiczne «And(I)» szuka pierwszego operandu falsy i zwraca go, a jeśli go nie odnajdzie to zwróci ostatni w kolejności operand.
+
+console.log(1 && 5);// true && true -> 5
+console.log(5 && 1);// true && true -> 1
+console.log(0 && 2);// false && true -> 0
+console.log(2 && 0);// true && false -> 0
+console.log("" && "Mango");// false && true -> ""
+console.log("Mango" && "");// true && false -> ""
+console.log("Mango" && "Poly");// true && true -> "Poly"
+console.log("Poly" && "Mango");// true && true -> "Mango"
+
+
+const age = 5;
+console.log(age < 10 || age > 30);// true || false -> true
+
+const age = 40;
+console.log(age < 10 || age > 30);// false || true -> true
+
+const age = 20;
+console.log(age < 10 || age > 30);// false || false -> false
+
+// Oznacza to, że logiczne «OR» wyłapuje pierwszą prawdę/wartość truthy i zwraca tę wartość lub ostatni w kolejności operand.
+
+
+console.log(true || false);// true
+console.log(false || true);// true
+console.log(true || true);// true
+
+console.log(3 || false);// 3
+console.log(false || 3);// 3
+console.log(3 || true);// 3
+console.log(true || 3);// true
