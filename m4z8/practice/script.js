@@ -98,6 +98,7 @@ students.flatMap(student => student.courses);
 
 
 
+
 //   Metoda filter()
 
 const values = [51, -3, 27, 21, -68, 42, -37];
@@ -179,3 +180,238 @@ const average = students.filter(
 ({ score }) => score >= LOW_SCORE && score < HIGH_SCORE
 );
 console.log(average);// Tablica obiektów o imionach Poly i Houston
+
+
+
+
+// Metoda find()
+
+// Metoda filter(callback) jest używana do znalezienia wszystkich elementów spełniających warunek, natomiast metoda find(callback) pozwala na znalezienie i zwrócenie pierwszego pasującego elementu, po odnalezieniu którego iteracja po tablicy zatrzymuje się. Oznacza to, że nawet jeśli mamy wiele elementów spełniających dany warunek, otrzymamy tylko pierwszy element spełniający warunek.
+
+// Metoda find() powinna służyć do jednego zadania - znalezienia elementu na podstawie unikalnej wartości właściwości. Na przykład może to być wyszukiwanie użytkownika na podstawie adresu email, samochodu na podstawie numeru seryjnego, książki na podstawie numeru ISBN itp.
+
+const colorPickerOptions = [
+  { label: "red", color: "#F44336" },
+  { label: "green", color: "#4CAF50" },
+  { label: "blue", color: "#2196F3" },
+  { label: "pink", color: "#E91E63" },
+  { label: "indigo", color: "#3F51B5" },
+];
+
+colorPickerOptions.find(option => option.label === "blue");// { label: 'blue', color: '#2196F3' }
+colorPickerOptions.find(option => option.label === "pink");// { label: 'pink', color: '#E91E63' }
+colorPickerOptions.find(option => option.label === "white");// undefined
+
+
+
+
+// Metoda findIndex()
+
+// Metoda findIndex(callback) jest nowoczesnym zamiennikiem metody indexOf(). Umożliwia wyszukiwanie według bardziej złożonych warunków niż tylko ścisła równość. Dzięki temu służy zarówno do wyszukiwania w tablicy elementów typu prymitywnego, jak i w tablicy obiektów.
+
+const colorPickerOptions = [
+  { label: "red", color: "#F44336" },
+  { label: "green", color: "#4CAF50" },
+  { label: "blue", color: "#2196F3" },
+  { label: "pink", color: "#E91E63" },
+  { label: "indigo", color: "#3F51B5" },
+];
+
+colorPickerOptions.findIndex(option => option.label === "blue");// 2
+colorPickerOptions.findIndex(option => option.label === "pink");// 3
+colorPickerOptions.findIndex(option => option.label === "white");// -1
+
+
+
+
+// Metody every() i some()
+
+// Metoda every()
+// Sprawdza, czy wszystkie elementy tablicy spełniają warunek dostarczony przez funkcję callback. Zwraca true lub false.
+// Jest odpowiednikiem operatora logicznego &&
+
+// Czy wszystkie elementy są większe lub równe zero? - tak
+[1, 2, 3, 4, 5].every(value => value >= 0);// true
+
+// Czy wszystkie elementy są większe lub równe zero? - nie
+[1, 2, 3, -10, 4, 5].every(value => value >= 0);// false
+
+
+// Metoda some()
+// Sprawdza, czy przynajmniej jeden element tablicy przeszedł test dostarczony przez funkcję wywołania zwrotnego. Zwraca true lub false.
+// Jest odpowiednikiem operatora logicznego ||
+
+// Czy jest przynajmniej jeden element większy lub równy zero? - tak
+[1, 2, 3, 4, 5].some(value => value >= 0);// true
+
+// Czy jest przynajmniej jeden element większy lub równy zero? - tak
+[-7, -20, 3, -10, -14].some(value => value >= 0);// true
+
+// Czy jest przynajmniej jeden element mniejszy od zera? - nie
+[1, 2, 3, 4, 5].some(value => value < 0);// false
+
+// Czy jest przynajmniej jeden element mniejszy od zera? - tak
+[1, 2, 3, -10, 4, 5].some(value => value < 0);// true
+
+
+const fruits = [
+  { name: "apples", amount: 100 },
+  { name: "bananas", amount: 0 },
+  { name: "grapes", amount: 50 },
+];
+
+// every zwróci true tylko wtedy, jeśli będzie więcej niż 0 sztuk wszystkich owoców
+const allAvailable = fruits.every(fruit => fruit.amount > 0);// false
+
+// some zwróci true tylko wtedy, jeśli będzie więcej niż 0 sztuk przynajmniej jednego owocu
+const anyAvailable = fruits.some(fruits => fruits.amount > 0);// true
+
+
+
+
+// Metoda reduce()
+// Wykonuje dowolne operacje, akumulujące tablicę do jednej zmiennej (dowolnego typu).
+
+
+const total = [2, 7, 3, 14, 6].reduce((previousValue, number) => {
+  return previousValue + number;
+}, 0);
+
+console.log(total);// 32
+
+
+
+// // # Najpierw metoda reduce() tworzy wewnętrzną zmienną-akumulator i
+// // # przypisuje jej wartość parametru initialValue lub pierwszego elementu
+// // # tablicy do iteracji, jeśli nie określono initialValue.
+// previousValue = 0
+
+// // # Następnie funkcja wywołania zwrotnego jest wywoływana dla każdego elementu tablicy. Obecna wartość
+// // # parametru previousValue jest tym, co funkcja zwrotna zwróciła w ostatniej iteracji.
+// Iteracja 1 -> previousValue = 0 -> number = 2 -> return 0 + 2 -> return 2
+// Iteracja 2 -> previousValue = 2 -> number = 7 -> return 2 + 7 -> return 9
+// Iteracja 3 -> previousValue = 9 -> number = 3 -> return 9 + 3 -> return 12
+// Iteracja 4 -> previousValue = 12 -> number = 14 -> return 12 + 14 -> return 26
+// Iteracja 5 -> previousValue = 26 -> number = 6 -> return 26 + 6 -> return 32
+
+// // # Po iteracji po całej tablicy metoda reduce() zwraca wartość akumulatora.
+// // Wynik - 32
+
+
+// Oznacza to, że metoda reduce() jest używana, gdy trzeba wziąć „wiele” i zredukować do „jednego”. W codziennych zadaniach często przydaje się ona do pracy z liczbami.
+
+
+const students = [
+  { name: "Mango", score: 83 },
+  { name: "Poly", score: 59 },
+  { name: "Ajax", score: 37 },
+  { name: "Kiwi", score: 94 },
+  { name: "Houston", score: 64 },
+];
+
+// Nazwa akumulatora może być dowolna, to tylko parametr funkcji
+const totalScore = students.reduce((total, student) => {
+  return total + student.score;
+}, 0);
+
+const averageScore = totalScore / students.length; // 67.4
+
+
+// Wyobraźmy, że mamy następujące zadanie: z tablicy postów na Twitterze pojedynczego użytkownika musimy obliczyć sumę wszystkich polubień. Możesz iterować za pomocą pętli for lub forEach, ale każde z tych rozwiązań będzie wymagało zbędnego kodu. Użyjmy więc reduce.
+
+const tweets = [
+  { id: "000", likes: 5, tags: ["js", "nodejs"] },
+  { id: "001", likes: 2, tags: ["html", "css"] },
+  { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
+  { id: "003", likes: 8, tags: ["css", "react"] },
+  { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
+];
+
+// Weźmy wszystkie elementy kolekcji i dodajmy wartości właściwości likes
+// do akumulatora, którego początkowa wartość wynosi 0.
+const likes = tweets.reduce((totalLikes, tweet) => totalLikes + tweet.likes, 0);
+
+console.log(likes);// 32
+
+// Liczenie polubień przyda nam się więcej niż raz, napiszmy więc funkcję
+// do zliczania polubień z kolekcji
+const countLikes = tweets => {
+  return tweets.reduce((totalLikes, tweet) => totalLikes + tweet.likes, 0);
+};
+
+console.log(countLikes(tweets));// 32
+
+
+
+const tweets = [
+  { id: "000", likes: 5, tags: ["js", "nodejs"] },
+  { id: "001", likes: 2, tags: ["html", "css"] },
+  { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
+  { id: "003", likes: 8, tags: ["css", "react"] },
+  { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
+];
+
+// Weźmy wszystkie elementy kolekcji i dodajmy wartości właściwości tags
+// do akumulatora, którego początkową wartość podamy jako pustą tablicę [].
+// W każdej iteracji dodajmy wszystkie elementy tablicy tweet.tags do akumulatora i zwróćmy go.
+const tags = tweets.reduce((allTags, tweet) => {
+  allTags.push(...tweet.tags);
+
+  return allTags;
+}, []);
+
+console.log(tags);
+
+// Zebranie listy tagów nie jest jednorazową operację, więc napiszmy funkcję
+// do zbioru tagów z kolekcji
+const getTags = tweets =>
+  tweets.reduce((allTags, tweet) => {
+    allTags.push(...tweet.tags);
+
+    return allTags;
+  }, []);
+
+console.log(getTags(tweets));
+// [ 'js', 'nodejs', 'html', 'css', 'html', 'js', 'nodejs', 'css', 'react', 'js', 'nodejs', 'react' ]
+
+
+
+
+const tweets = [
+  { id: "000", likes: 5, tags: ["js", "nodejs"] },
+  { id: "001", likes: 2, tags: ["html", "css"] },
+  { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
+  { id: "003", likes: 8, tags: ["css", "react"] },
+  { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
+];
+
+const getTags = tweets =>
+  tweets.reduce((allTags, tweet) => {
+    allTags.push(...tweet.tags);
+
+    return allTags;
+  }, []);
+
+const tags = getTags(tweets);
+
+// Zadeklarujmy nasz callback jako osobną zmienną i podajmy ją metodzie reduce
+// Jest to standardowa praktyka, jeśli funkcja wywołania zwrotnego jest dość długa lub wielokrotnie używana.
+
+// Jeśli obiekt-akumulator nie posiada własnej właściwości z kluczem tag,
+// utwórzmy go i zapiszmy mu wartość 0.
+// W przeciwnym razie zwiększamy wartość o 1.
+const getTagStats = (acc, tag) => {
+  if (!acc.hasOwnProperty(tag)) {
+    acc[tag] = 0;
+  }
+
+  acc[tag] += 1;
+
+  return acc;
+};
+
+// Początkową wartością akumulatora jest pusty obiekt {}
+const countTags = tags => tags.reduce(getTagStats, {});
+
+const tagCount = countTags(tags);
+console.log(tagCount);
