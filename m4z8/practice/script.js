@@ -415,3 +415,148 @@ const countTags = tags => tags.reduce(getTagStats, {});
 
 const tagCount = countTags(tags);
 console.log(tagCount);
+
+
+
+// Metoda sort()
+
+const scores = [61, 19, 74, 35, 92, 56];
+scores.sort();
+console.log(scores);// [19, 35, 56, 61, 74, 92]
+
+
+const scores = [27, 2, 41, 4, 7, 3, 75];
+scores.sort();
+console.log(scores);// [2, 27, 3, 4, 41, 7, 75]
+
+
+const students = ["Vika", "Andrey", "Oleg", "Julia", "Boris", "Katya"];
+students.sort();
+console.log(students);
+// [ 'Andrey', 'Boris', 'Julia', 'Katya', 'Oleg', 'Vika' ]
+
+
+const letters = ["b", "B", "a", "A", "c", "C"];
+letters.sort();
+console.log(letters);// ['A', 'B', 'C', 'a', 'b', 'c']
+
+
+
+// Z uwagi na fakt, że oryginalna tablica jest posortowana, naruszana jest zasada czystości funkcji i nie jest wygodne tworzenie kilku kolekcji pochodnych na podstawie oryginalnej, gdy chcemy na przykład utworzyć kolekcję posortowaną w kolejności rosnącej, a drugą w kolejności malejącej. Dlatego przed sortowaniem tworzymy pełną kopię oryginalnej tablicy i dopiero ja sortujemy.
+
+const scores = [61, 19, 74, 35, 92, 56];
+const ascendingScores = [...scores].sort();
+
+console.log(scores);// [61, 19, 74, 35, 92, 56]
+console.log(ascendingScores);// [19, 35, 56, 61, 74, 92]
+
+// sort(compareFunction)
+
+
+// a - to pierwszy element do porównania.
+// b - to drugi element do porównania.
+// Jeśli wywołanie compareFunction(a, b) zwróci jakąkolwiek wartość ujemną, czyli a jest mniejsze niż b, sortowanie umieści a przed b. To jest sortowanie w porządku rosnącym (ascending).
+
+const scores = [61, 19, 74, 35, 92, 56];
+const ascendingScores = [...scores].sort((a, b) => a - b);
+console.log(ascendingScores);// [19, 35, 56, 61, 74, 92]
+
+
+// Jeśli wywołanie compareFunction(a, b) zwróci dowolną wartość dodatnią większą od zera, czyli b jest większe niż a, sortowanie umieści b przed a. To jest sortowanie malejąco (descending).
+
+const scores = [61, 19, 74, 35, 92, 56];
+const descendingScores = [...scores].sort((a, b) => b - a);
+console.log(descendingScores);// [92, 74, 61, 56, 35, 19]
+
+
+// Jeśli wywołanie compareFunction(a, b) zwróci 0, sortowanie pozostawi a i b niezmienione względem siebie, ale posortuje je względem wszystkich innych elementów. W takim wypadku tak naprawdę nie ma więc znaczenia co zwrócimy, ale warto trzymać się zasad i zwrócić 0
+
+"a".localeCompare("b");// -1
+"b".localeCompare("a");// 1
+"a".localeCompare("a");// 0
+"b".localeCompare("b");// 0
+
+
+// Zwraca wartość ujemną, jeśli firstString musi znajdować się w kolejności przed secondString
+// Zwraca wartość dodatnią większą od zera, jeśli firstString musi znajdować się w kolejności po secondString
+// Jeśli wartości są takie same, zwracane jest zero.
+
+const students = ["Vika", "Andrey", "Oleg", "Julia", "Boris", "Katya"];
+
+const inAlphabetOrder = [...students].sort((a, b) => a.localeCompare(b));
+console.log(inAlphabetOrder);
+// [ 'Andrey', 'Boris', 'Julia', 'Katya', 'Oleg', 'Vika' ]
+
+const inReversedOrder = [...students].sort((a, b) => b.localeCompare(a));
+console.log(inReversedOrder);
+// [ 'Vika', 'Oleg', 'Katya', 'Julia', 'Boris', 'Andrey' ]
+
+// Sortowanie obiektów
+// Podczas pracy z tablicą obiektów sortowanie odbywa się według wartości liczbowej lub stringowej jakiejś właściwości. Na przykład weźmy grupę studentów z wynikami testów. Tablicę obiektów należy posortować rosnąco i malejąco według liczby punktów oraz według imienia ucznia.
+
+const students = [
+  { name: "Mango", score: 83 },
+  { name: "Poly", score: 59 },
+  { name: "Ajax", score: 37 },
+  { name: "Kiwi", score: 94 },
+];
+
+const inAscendingScoreOrder = students.sort(
+  (firstStudent, secondStudent) => firstStudent.score - secondStudent.score
+);
+
+const inDescendingScoreOrder = students.sort(
+  (firstStudent, secondStudent) => secondStudent.score - firstStudent.score
+);
+
+const inAlphabeticalOrder = students.sort((firstStudent, secondStudent) =>
+  firstStudent.name.localeCompare(secondStudent.name)
+);
+
+
+
+// Łańcuchowanie metod
+
+const students = [
+  { name: "Mango", score: 83, courses: ["matematyka", "fizyka"] },
+  { name: "Poly", score: 59, courses: ["informatyka", "matematyka"] },
+  { name: "Ajax", score: 37, courses: ["fizyka", "biologia"] },
+  { name: "Kiwi", score: 94, courses: ["literatura", "informatyka"] },
+];
+
+
+// Musisz posortować tablicę ich imion w porządku rosnącym według wyników testów. W tym celu posortujemy kopię tablicy metodą sort(), a następnie za pomocą metody map() utworzymy tablicę wartości właściwości name z posortowanej tablicy.
+
+const sortedByAscendingScore = [...students].sort((a, b) => a.score - b.score);
+const names = sortedByAscendingScore.map(student => student.name);
+
+console.log(names);// ['Ajax', 'Poly', 'Mango', 'Kiwi']
+
+// Problem polega na tym, że musimy tworzyć zmienne pośrednie po każdej operacji oprócz ostatniej. Zmienna sortedByAscendingScore jest tak naprawdę zbędna.
+
+// Możesz pozbyć się takich „martwych” zmiennych, grupując wywołania metod w łańcuchy. Każda następna metoda zostanie wykonana na wyniku poprzedniej.
+
+const names = [...students]
+  .sort((a, b) => a.score - b.score)
+  .map(student => student.name);
+
+console.log(names);// ['Ajax', 'Poly', 'Mango', 'Kiwi']
+
+// Zrób kopię oryginalnej tablicy przed sortowaniem.
+// Wywołaj metodę sort() na kopii oryginalnej tablicy.
+// Zastosuj metodę map() do wyniku metody sort().
+// Zmiennej names jest przypisywany wynik metody map().
+// Uzyskajmy posortowaną alfabetycznie tablicę unikalnych odwiedzonych przedmiotów.
+
+const uniqueSortedCourses = students
+  .flatMap(student => student.courses)
+  .filter((course, index, array) => array.indexOf(course) === index)
+  .sort((a, b) => a.localeCompare(b));
+
+console.log(uniqueSortedCourses);// ['biologia', 'informatyka', 'literatura', 'matematyka', 'fizyka']
+
+// Na oryginalnej tablicy wywołaj flatMap() i utwórz spłaszczoną tablicę wszystkich kursów.
+// Na wyniku metody flatMap() zastosuj metodę filter(), aby odfiltrować unikalne elementy.
+// Na wyniku metody filter() wywołaj sort().
+// Zmiennej uniqueSortedCourses przypisywany jest wynik metody sort().
+// Łańcuch metod może mieć dowolną długość, ale zwykle nie potrzebujemy więcej niż 2-3 operacje. Po pierwsze, metody iteracyjne są używane do stosunkowo prostych operacji z kolekcją. Po drugie, wywołanie każdej kolejnej metody jest dodatkową iteracją po tablicy, co przy większej liczbie elementów może wpłynąć na wydajność.
